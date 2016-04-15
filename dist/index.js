@@ -47,20 +47,18 @@ domready(function() {
 
             // get reblogs
             if (matches) {
-                console.log(matches[1], matches[2], matches[3]);
                 if (!nodes[matches[1]]) nodes[matches[1]] = {
                     id: matches[1],
-                    name: basename(matches[1]),
-                    score: parseFloat(matches[2])
+                    name: basename(matches[1])
                 };
                 if (!nodes[matches[3]]) nodes[matches[3]] = {
                     id: matches[3],
-                    name: basename(matches[3]),
-                    score: parseFloat(matches[2])
+                    name: basename(matches[3])
                 };
                 if (!edges[matches[1] + ',' + matches[3]]) edges[matches[1] + ',' + matches[3]] = {
                     source: matches[1],
-                    target: matches[3]
+                    target: matches[3],
+                    score: -Math.log(parseFloat(1-matches[2]))*50
                 };
             }
         });
@@ -92,7 +90,8 @@ domready(function() {
                 .selector('edge')
                 .css({
                     'target-arrow-shape': 'triangle',
-                    'curve-style': 'haystack' // fast edges!
+                    'curve-style': 'haystack',
+                    'width': 'data(score)'
                 }),
             elements: {
                 "nodes": nodes_cy,
@@ -134,6 +133,7 @@ domready(function() {
 
     submitForm();
 });
+
 },{"cytoscape":8,"cytoscape-arbor":2,"cytoscape-cola":3,"cytoscape-cose-bilkent":4,"cytoscape-dagre":5,"cytoscape-spread":6,"cytoscape-springy":7,"dagre":9,"domready":39,"jquery":60,"springy":63,"underscore":64,"when":82}],2:[function(require,module,exports){
 /*!
 Copyright (c) The Cytoscape Consortium
