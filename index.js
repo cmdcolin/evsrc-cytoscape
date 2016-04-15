@@ -91,7 +91,7 @@ domready(function() {
                 .css({
                     'target-arrow-shape': 'triangle',
                     'curve-style': 'haystack',
-                    'width': function(elt) { return -Math.log(1-elt.data('score')) * 50; }
+                    'width': '5px'
                 }),
             elements: {
                 "nodes": nodes_cy,
