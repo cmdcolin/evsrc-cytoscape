@@ -26,7 +26,7 @@ domready(function() {
     cyarbor(cytoscape, arbor);
     cyspread(cytoscape);
     cycose(cytoscape);
-    cyqtip( cytoscape, $ );
+    cyqtip(cytoscape, $);
     function basename(path) {
         return path.split('/').reverse()[0];
     }
@@ -108,7 +108,7 @@ domready(function() {
                 name: layout,
                 padding: 10,
                 randomize: true,
-                animate: true,
+                animate: $("#animate").prop('checked'),
                 repulsion: 1
             }
         });
@@ -127,7 +127,6 @@ domready(function() {
                 }
             }
         });
-
     }
     
 
