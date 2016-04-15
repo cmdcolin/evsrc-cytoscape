@@ -1,8 +1,9 @@
 var when = require('when');
-var $ = require('jquery');
 var cytoscape = require('cytoscape');
 var domready = require('domready');
 var _ = require('underscore');
+var $ = require('jquery');
+var cyqtip = require('cytoscape-qtip');
 var cycola = require('cytoscape-cola');
 var cycose = require('cytoscape-cose-bilkent');
 var cyarbor = require('cytoscape-arbor');
@@ -18,15 +19,14 @@ var dagre = require('dagre');
 var springy = require('springy');
 
 domready(function() {
-    var timer;
     var cy;
-    var original_poster;
-    cycola(cytoscape, cola); // register extension
-    cydagre(cytoscape, dagre); // register extension
-    cyspringy(cytoscape, springy); // register extension
-    cyarbor(cytoscape, arbor); // register extension
-    cyspread(cytoscape); // register extension
-    cycose(cytoscape); // register extension
+    cycola(cytoscape, cola);
+    cydagre(cytoscape, dagre);
+    cyspringy(cytoscape, springy);
+    cyarbor(cytoscape, arbor);
+    cyspread(cytoscape);
+    cycose(cytoscape);
+    cyqtip( cytoscape, $ );
     function basename(path) {
         return path.split('/').reverse()[0];
     }
@@ -57,7 +57,7 @@ domready(function() {
                 if (!edges[matches[1] + ',' + matches[3]]) edges[matches[1] + ',' + matches[3]] = {
                     source: matches[1],
                     target: matches[3],
-                    score: -Math.log(parseFloat(1-matches[2]))*50
+                    score: parseFloat(matches[2])
                 };
             }
         });
@@ -90,7 +90,7 @@ domready(function() {
                 .css({
                     'target-arrow-shape': 'triangle',
                     'curve-style': 'haystack',
-                    'width': 'data(score)'
+                    'width': function(elt) { return -Math.log(1-elt.data('score')) * 50; }
                 }),
             elements: {
                 "nodes": nodes_cy,
@@ -112,7 +112,24 @@ domready(function() {
                 repulsion: 1
             }
         });
+        cy.elements().qtip({
+            content: function(arg){ return '<b>'+this.data('id')+'</b><br />'+(this.data('score')?'Correlation: '+this.data('score') : this.data('label')); },
+            position: {
+                my: 'top center',
+                at: 'bottom center'
+            },
+            style: {
+                classes: 'qtip-bootstrap',
+                'font-family': 'sans-serif',
+                tip: {
+                    width: 16,
+                    height: 8
+                }
+            }
+        });
+
     }
+    
 
 
     // resubmit form
