@@ -3,6 +3,7 @@ var $ = require('jquery');
 var cytoscape = require('cytoscape');
 var domready = require('domready');
 var _ = require('underscore');
+var webcola = require('webcola');
 var cycola = require('cytoscape-cola');
 var cycose = require('cytoscape-cose-bilkent');
 var cyarbor = require('cytoscape-arbor');
@@ -21,7 +22,7 @@ domready(function(){
   var timer;
   var cy;
   var original_poster;
-  cycola( cytoscape, cola ); // register extension
+  cycola( cytoscape, webcola ); // register extension
   cydagre( cytoscape, dagre ); // register extension
   cyspringy( cytoscape, springy ); // register extension
   cyarbor( cytoscape, arbor ); // register extension
@@ -31,24 +32,19 @@ domready(function(){
 
   function submitForm() {
     // input nodes/edges for reblogs and OP
-    var nodes={};
-    var edges={};
+    var nodes = {};
+    var edges = {};
 
     // user form
-    var notes=$("#notes").val();
-    var layout=$("#layout option:selected").text();
-    var layout_time=$("#layout_time").val();
-
-    // clear the timer for stopping animation
-    clearTimeout(timer);
-   
+    var notes = $("#notes").val();
+    var layout = $("#layout option:selected").text();
 
     // process textarea from form
     notes.split("\n").forEach(function(line) {
-      var matches;
+      var matches = line.match(/(\S+) reblogged this from (\S+)/);
      
       // get reblogs
-      if(matches=line.match(/(\S+) reblogged this from (\S+)/)) {
+      if(matches) {
         if(!nodes[matches[1]]) nodes[matches[1]]={id: matches[1], name: matches[1], score:1};
         else nodes[matches[1]].score+=5;
         if(!nodes[matches[2]]) nodes[matches[2]]={id: matches[2], name: matches[2], score:1};
@@ -57,7 +53,8 @@ domready(function(){
       }
 
       // get original poster
-      if(matches=line.match(/(\S+) posted this/)) {
+      matches = line.match(/(\S+) posted this/);
+      if(matches) {
         original_poster=matches[1];
       }
     });
@@ -65,9 +62,11 @@ domready(function(){
     var nodes_cy = _.map(nodes, function(node) { return {"data":node}; });
     var edges_cy = _.map(edges,function(edge) { return {"data":edge}; });
 
-
-    // set boring stylesheet
-    var stylesheet_cy=cytoscape.stylesheet()
+   
+    // create cytoscape instance
+    cy=cytoscape({
+      container: document.getElementById('cy'),
+      style: cytoscape.stylesheet()
       .selector('node')
         .style({
           'content': 'data(name)',
@@ -78,54 +77,40 @@ domready(function(){
         })
       .selector('edge')
         .css({
-          'target-arrow-shape': 'triangle'
-        });
-   
-    // create cytoscape instance
-    cy=cytoscape({
-      container: document.getElementById('cy'),
-      style: stylesheet_cy,
+          'target-arrow-shape': 'triangle',
+          'curve-style': 'haystack' // fast edges!
+        }),
       elements: {
         "nodes": nodes_cy,
         "edges": edges_cy
+      },
+      // this is an alternative that uses a bitmap during interaction
+      textureOnViewport: true,
+      
+      // interpolate on high density displays instead of increasing resolution
+      pixelRatio: 1,
+      
+      // a motion blur effect that increases perceived performance for little or no cost
+      motionBlur: true,
+      layout:  {
+        name: layout,
+        padding: 10,
+        randomize: true,
+        animate: true,
+        repulsion: 1
       }
     });
-
-    //manually crate and stop layout after timeout
-    var layout_cy=cy.makeLayout({
-      name: layout,
-      padding: 10,
-      randomize: true,
-      animate: true,
-      coolingFactor: 0.99, 
-      infinite: true,
-      repulsion: 1
-    });
-
-    layout_cy.run();
-
-
-    // update status
-    var count = 0;
-    $("#status").text("Optimizing layout ...");
-    $("#status").css("background-color","hsl(20,80%,70%)");
-    timer=setTimeout(function() {
-      layout_cy.stop();
-      $("#status").css("background-color","hsl(120,80%,70%)");
-      $("#status").text("Done with layout");
-    }, layout_time);
-
 
 
     // color by distance from original poster using BFS
     if($("#color_by_bfs").prop('checked')) {
       var max_depth=1;
-      var bfs = cy.elements().bfs('#'+original_poster, function(i, depth){
+      cy.elements().bfs('#'+original_poster, function(i, depth){
         if(depth>max_depth) { max_depth=depth; }
       }, false);
 
       //use breadth first search to color nodes
-      var bfs = cy.elements().bfs('#'+original_poster, function(i, depth){
+      cy.elements().bfs('#'+original_poster, function(i, depth){
         this.style('background-color', 'hsl('+depth*150/max_depth+',80%,55%)');
       }, false);
     }
