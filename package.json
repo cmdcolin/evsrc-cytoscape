@@ -1,7 +1,7 @@
 {
-  "name": "tumblrgraph2",
-  "version": "1.0.4",
-  "description": "Graph tumblr reblogs with cytoscape.js ",
+  "name": "evsrc-cytoscape",
+  "version": "1.0.0",
+  "description": "Graph correlations between files in git history from the evsrc tool with cytoscape.js",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -31,7 +31,7 @@
     "webcola": "tgdwyer/WebCola#master",
     "when": "^3.7.7"
   },
-  "repository": "https://github.com/cmdcolin/tumblrgraph2.git",
+  "repository": "https://github.com/cmdcolin/evsrc-cytoscape.git",
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-browserify": "^0.5.1",
