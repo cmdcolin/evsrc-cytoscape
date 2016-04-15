@@ -1,6 +1,6 @@
-# Tumblrgraph2
+# evsrc-cytoscape
 
-Graph tumblr reblogs with cytoscape.js
+Graph correlations between files in git commit history from https://github.com/armish/evsrc/
 
 
 ## Build
@@ -28,4 +28,4 @@ Requires browserify, uglifyjs
 ## Demo
 
 
-http://cmdcolin.github.io/tumblrgraph2/
+http://cmdcolin.github.io/evsrc-cytoscape/
