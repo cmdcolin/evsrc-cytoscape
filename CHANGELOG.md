@@ -1,3 +1,10 @@
+# Version 1.0.1
+
+## Features
+
+- Add node repulsion option
+- Add coloring for correlation on edges
+
 # Version 1.0.0
 
 ## Features
