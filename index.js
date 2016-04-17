@@ -39,7 +39,8 @@ domready(function() {
 
         // user form
         var notes = $("#notes").val();
-        var layout = $("#layout option:selected").text();
+        var mincor = 1;
+        var maxcor = 0;
 
         // process textarea from form
         notes.split("\n").forEach(function(line) {
@@ -60,6 +61,8 @@ domready(function() {
                     target: matches[3],
                     score: parseFloat(matches[2])
                 };
+                if(mincor > matches[2]) mincor = matches[2];
+                if(maxcor < matches[2]) maxcor = matches[2];
             }
         });
 
@@ -89,9 +92,8 @@ domready(function() {
                 })
                 .selector('edge')
                 .css({
-                    'target-arrow-shape': 'triangle',
-                    'curve-style': 'haystack',
-                    'width': '5px'
+                    'width': '5px',
+                    'line-color': function(elt) { var s=(elt.data('score')-mincor)*200/(maxcor-mincor);return 'hsl('+s+',40%,60%)'; }
                 }),
             elements: {
                 "nodes": nodes_cy,
@@ -106,15 +108,16 @@ domready(function() {
             // a motion blur effect that increases perceived performance for little or no cost
             motionBlur: true,
             layout: {
-                name: layout,
-                padding: 10,
+                name: $("#layout option:selected").text(),
+                ungrabifyWhileSimulating: true,
+                nodeSpacing: $("#node_repulsion").val(),
                 randomize: true,
+                handleDisconnected: true,
                 animate: $("#animate").prop('checked'),
-                repulsion: 1
             }
         });
         cy.elements().qtip({
-            content: function(arg){ return '<b>'+this.data('id')+'</b><br />'+(this.data('score')?'Correlation: '+this.data('score') : this.data('label')); },
+            content: function(arg){ return '<b>'+this.data('id')+'</b><br />'+(this.data('score')?'Correlation: '+this.data('score') : this.data('name')); },
             position: {
                 my: 'top center',
                 at: 'bottom center'
@@ -139,7 +142,27 @@ domready(function() {
     });
 
 
+    function redraw() {
+        var layout = cy.makeLayout({
+            name: $("#layout option:selected").text(),
+            ungrabifyWhileSimulating: true,
+            nodeSpacing: $("#node_repulsion").val(),
+            randomize: false,
+            handleDisconnected: true,
+            animate: $("#animate").prop('checked'),
+        });
+
+        layout.run();
+    }
+    $("#node_repulsion").on('change', redraw);
+    $("#layout").on('change', redraw);
+   
+
+
+
+
     $("#save_button").on('click', function(e) {
+        $("#output").empty();
         $("#output").append($("<a/>").attr({
             href: cy.png({
                 scale: 3

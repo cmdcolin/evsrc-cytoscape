@@ -21,6 +21,7 @@
             <form id="myform">
                 <label>Animate?</label>
                 <input type="checkbox" id="animate" checked="checked"></input>
+                <label for="node_repulsion">Node repulsion (cola)</label><input id="node_repulsion" type="number" value="20" step=10 min=10 />
                 <label>Select layout</label>
                 <select id="layout">
                     <option value="cola">cola</option>
@@ -38,96 +39,24 @@
                 <div style="display:block">
                     <textarea rows=10 cols=80 id="notes">
 FileA	pcorValues	FileB
-lib/gwt/gwtbootstrap3-extras-0.9.2.jar	0.282069356007086	lib/gwt/gwtbootstrap3-0.9.2.jar
-src/groovy/org/bbop/apollo/operation/OperationEnum.groovy	0.282069356007086	grails-app/domain/org/bbop/apollo/Operation.groovy
-docs/exts/markdowntransform.pyc	0.271945286232951	docs/exts/markdowntransform.py
-web-app/js/restapidoc/restapidoc.json	0.262477807537244	restapidoc.json
-src/gwt/org/bbop/apollo/gwt/client/resources/TreeResources.java	0.245207424979218	src/gwt/org/bbop/apollo/gwt/client/resources/Tree.css
-client/apollo/img/plus-arrowhead.png	0.243207952179598	client/apollo/img/minus-arrowhead.png
-scripts/delete_only_features.sh	0.242761226027948	scripts/delete_all_features.sh
-client/apollo/img/small-plus-arrowhead.png	0.237348003217821	client/apollo/img/small-minus-arrowhead.png
-src/groovy/org/bbop/apollo/sequence/StandardTranslationTable.groovy	0.231662336977141	src/groovy/org/bbop/apollo/sequence/Overlapper.groovy
-src/groovy/org/bbop/apollo/projection/ReferenceTrack.groovy	0.230112493376813	grails-app/services/org/bbop/apollo/ProjectionService.groovy
-src/groovy/org/bbop/apollo/filter/StopCodonFilter.groovy	0.224855516460829	src/groovy/org/bbop/apollo/filter/Cds3Filter.groovy
-src/groovy/org/bbop/apollo/PaddingStrategy.groovy	0.224652337653381	src/groovy/org/bbop/apollo/DefaultPaddingStrategy.groovy
-src/groovy/org/bbop/apollo/LetterPaddingStrategy.groovy	0.224568121112519	src/groovy/org/bbop/apollo/LeftPaddingStrategy.groovy
-src/groovy/org/bbop/apollo/ConfigurableFeature.groovy	0.222800034958512	grails-app/domain/org/bbop/apollo/CustomDomainMapping.groovy
-grails-app/views/sequence/websocketTest.gsp	0.222629419460612	grails-app/views/sequence/index.gsp
-docs/web_services/examples/shell/setStatus.sh	0.220010998642304	docs/web_services/examples/shell/addAttribute.sh
-docs/web_services/examples/shell/addComment.sh	0.220010998642304	docs/web_services/examples/shell/addAttribute.sh
-docs/web_services/examples/shell/setStatus.sh	0.220010998642304	docs/web_services/examples/shell/addComment.sh
-docs/NCBI_checks/Common_Eukaryotic_Annotation_Errors_to_Avoid.docx	0.216338891936264	docs/NCBI_checks/Additional_Checks.txt
-test/client/js_tests/spec/JSONUtilsSpec.js	0.213555983897544	test/client/js_tests/spec/GFF3toJbrowseJsonSpec.js
-client/apollo/css/edit_dbxrefs.css	0.212023183557962	client/apollo/css/edit_comments.css
-grails-app/domain/org/bbop/apollo/UserPermission.groovy	0.207142415022171	grails-app/domain/org/bbop/apollo/GroupPermission.groovy
-docs/schemaupdates.pdf	0.206317788074397	docs/architecture2.png
-src/gwt/org/bbop/apollo/gwt/client/TranscriptDetailPanel.java	0.204940776416692	src/gwt/org/bbop/apollo/gwt/client/RepeatRegionDetailPanel.java
-client/apollo/jslib/bbop/jquery.js	0.203893352792346	client/apollo/jslib/bbop/bbop.js
-grails-app/domain/org/bbop/apollo/UserTrackPermission.groovy	0.202381556702181	grails-app/domain/org/bbop/apollo/GroupTrackPermission.groovy
-src/java/org/bbop/apollo/ImprovedPostgresDialect.java	0.199650857886348	src/java/org/bbop/apollo/ImprovedH2Dialect.java
-grails-app/views/featureEvent/index.gsp	0.198970986547139	grails-app/views/featureEvent/_form.gsp
-grails-app/views/featureEvent/show.gsp	0.198970986547139	grails-app/views/featureEvent/_form.gsp
-grails-app/views/featureEvent/show.gsp	0.198970986547139	grails-app/views/featureEvent/index.gsp
-grails-app/views/proxy/show.gsp	0.198879548251743	grails-app/views/proxy/index.gsp
-docs/web_services/examples/groovy/transfer_annotations2to2.groovy	0.198096554149989	docs/web_services/examples/groovy/migrate_annotations1to2.groovy
-test/integration/org/bbop/apollo/Gff3HandlerServiceIntegrationSpec.groovy	0.192684653830469	test/integration/org/bbop/apollo/FastaHandlerServiceIntegrationSpec.groovy
-src/gwt/org/bbop/apollo/gwt/client/event/AnnotationInfoChangeEventHandler.java	0.192548663176236	src/gwt/org/bbop/apollo/gwt/client/event/AnnotationInfoChangeEvent.java
-grails-app/assets/images/webapollo_favicon.ico	0.19183659697679	client/apollo/img/webapollo_favicon.ico
-grails-app/assets/images/ApolloLogo_100x36.png	0.191836596976789	client/apollo/img/ApolloLogo_100x36.png
-src/java/org/bbop/apollo/PermissionException.groovy	0.191407755462508	src/java/org/bbop/apollo/AnnotationException.groovy
-src/groovy/org/bbop/apollo/projection/TrackProjector.groovy	0.19015121380362	src/groovy/org/bbop/apollo/projection/RefSeqProjector.groovy
-src/gwt/org/bbop/apollo/gwt/client/event/GroupChangeEventHandler.java	0.190000960407229	src/gwt/org/bbop/apollo/gwt/client/event/ExportEventHandler.java
-grails-app/domain/org/bbop/apollo/CustomTranscript.groovy	0.189996406222342	grails-app/domain/org/bbop/apollo/CustomFeature.groovy
-grails-app/services/org/bbop/apollo/ConfigurableFeatureService.groovy	0.189996406222342	grails-app/domain/org/bbop/apollo/CustomFeature.groovy
-grails-app/services/org/bbop/apollo/ConfigurableFeatureService.groovy	0.189996406222342	grails-app/domain/org/bbop/apollo/CustomTranscript.groovy
-src/gwt/org/bbop/apollo/gwt/client/event/UserChangeEventHandler.java	0.189328693340812	src/gwt/org/bbop/apollo/gwt/client/event/ExportEventHandler.java
-grails-app/domain/org/bbop/apollo/Insertion.groovy	0.188213656185303	grails-app/domain/org/bbop/apollo/Deletion.groovy
-docs/web_services/examples/perl/test_remove_features.pl	0.187706594474172	docs/web_services/examples/perl/test_add_feature.pl
-grails-app/views/featureType/index.gsp	0.187172978502164	grails-app/domain/org/bbop/apollo/FeatureType.groovy
-docs/apollo-stress-tests/suite2/jmeter-dev-stress-test-3.jmx	0.186888502672505	docs/apollo-stress-tests/suite2/jmeter-dev-blast-test-4.jmx
-grails-app/domain/org/bbop/apollo/AnalysisProperty.groovy	0.185698544970484	grails-app/domain/org/bbop/apollo/AnalysisFeature.groovy
-web-app/images/loading.gif	0.185095703089518	client/apollo/img/loading.gif
-grails-app/assets/javascripts/vendor/angular-strap.tpl.min.js	0.183839161711557	grails-app/assets/javascripts/vendor/angular-strap.min.js
-grails-app/assets/javascripts/vendor/angular-strap.min.js	0.183839161711556	grails-app/assets/javascripts/vendor/angular-route.js
-grails-app/assets/javascripts/vendor/angular-strap.tpl.min.js	0.183839161711556	grails-app/assets/javascripts/vendor/angular-route.js
-test/unit/org/bbop/apollo/ChadoHandlerServiceSpec.groovy	0.183830768554509	test/unit/org/bbop/apollo/AbstractApolloControllerSpec.groovy
-src/groovy/org/bbop/apollo/report/SequenceSummary.groovy	0.183137345439254	grails-app/views/sequence/report.gsp
-src/gwt/org/bbop/apollo/gwt/client/RepeatRegionDetailPanel.ui.xml	0.182732432482309	src/gwt/org/bbop/apollo/gwt/client/GeneDetailPanel.ui.xml
-docs/web_services/examples/groovy/stress_test.groovy	0.178567874515605	docs/web_services/examples/groovy/SampleFeatures.groovy
-web-app/WEB-INF/tld/c.tld	0.178087741583301	grails-app/i18n/shiro.properties
-web-app/WEB-INF/tld/fmt.tld	0.178087741583301	grails-app/i18n/shiro.properties
-web-app/WEB-INF/tld/fmt.tld	0.178087741583301	web-app/WEB-INF/tld/c.tld
-test/client/selenium_tests/lib/__init__.py	0.177074160091253	test/client/selenium_tests/lib/WebApolloTest.py
-test/client/selenium_tests/pythium_test.py	0.177074160091253	test/client/selenium_tests/lib/WebApolloTest.py
-test/client/selenium_tests/pythium_test.py	0.177074160091253	test/client/selenium_tests/lib/__init__.py
-grails-app/views/proxy/show.gsp	0.172860887525445	grails-app/views/proxy/_form.gsp
-web-app/css/web_api_stylesheet.css	0.170418710926356	grails-app/assets/stylesheets/web_api_stylesheet.css
-grails-app/views/annotator/notAuthorized.gsp	0.169877251454977	grails-app/controllers/org/bbop/apollo/AvailableStatusController.groovy
-src/groovy/org/bbop/apollo/sequence/search/blat/BlatCommandLine.java	0.169597234660842	src/groovy/org/bbop/apollo/sequence/search/blast/BlastCommandLine.java
-grails-app/views/annotator/notAuthorized.gsp	0.169517094950411	grails-app/controllers/org/bbop/apollo/FeatureTypeController.groovy
-src/gwt/org/bbop/apollo/gwt/client/TranscriptDetailPanel.ui.xml	0.167969043230097	src/gwt/org/bbop/apollo/gwt/client/GeneDetailPanel.ui.xml
-docs/images/githubTestProgress.png	0.167704950573646	docs/images/githubPullRequest.png
-docs/images/githubPullRequest.png	0.167704950573646	docs/images/githubForkButton.png
-docs/images/githubTestProgress.png	0.167704950573646	docs/images/githubForkButton.png
-docs/images/githubTestStatus.png	0.167704950573646	docs/images/githubPullRequest.png
-docs/images/githubTestStatus.png	0.167704950573646	docs/images/githubTestProgress.png
-docs/images/githubTestStatus.png	0.167704950573646	docs/images/githubForkButton.png
-grails-app/views/annotator/report.gsp	0.167563125348667	grails-app/views/annotator/detail.gsp
-gradlew.bat	0.166978775354725	gradlew
-gradlew	0.166978775354725	gradle/wrapper/gradle-wrapper.jar
-gradlew.bat	0.166978775354725	gradle/wrapper/gradle-wrapper.jar
-settings.gradle	0.166978775354725	gradle/wrapper/gradle-wrapper.jar
-settings.gradle	0.166978775354725	gradlew
-settings.gradle	0.166978775354725	gradlew.bat
-docs/apollo-stress-tests/suite2/jmeter-dev-stress-test-notes.md	0.164926536697494	docs/apollo-stress-tests/suite2/example-users-for-stress-test.csv
-src/gwt/org/bbop/apollo/gwt/client/dto/UserOrganismPermissionInfo.java	0.164294601103455	src/gwt/org/bbop/apollo/gwt/client/dto/OrganismPermissionInfo.java
-test/unit/org/bbop/apollo/FeatureServiceSpec.groovy	0.163086807773707	test/integration/org/bbop/apollo/FeatureServiceIntegrationSpec.groovy
-grails-app/taglib/org/bbop/apollo/PermissionTagLib.groovy	0.162868865806801	grails-app/assets/javascripts/vendor/angular-1.3.17.min.js
-src/gwt/org/bbop/apollo/gwt/client/dto/HasJSON.java	0.162346913809517	src/gwt/org/bbop/apollo/gwt/client/dto/GroupOrganismPermissionInfo.java
-test/integration/resources/sequences/honeybee-Group1.10/trackList.json	0.161397578322486	test/integration/resources/sequences/honeybee-Group1.10/seq/refSeqs.json
-docs/web_services/examples/groovy/get_gff3.groovy	0.160853963035885	docs/web_services/examples/groovy/get_fasta.groovy
-src/groovy/org/bbop/apollo/report/PerformanceMetric.groovy	0.160743132909651	grails-app/views/home/metrics.gsp
-src/gwt/org/bbop/apollo/gwt/client/event/UserChangeEventHandler.java	0.16013703158544	src/gwt/org/bbop/apollo/gwt/client/event/GroupChangeEventHandler.java
+js/main.js	0.0909444606990114	css/main.css
+js/MyVariantViewer.profile.js	0.0608689447674282	css/main.css
+js/main.js	0.0608689447674282	js/MyVariantViewer.profile.js
+js/View/FeatureGlyph/Diamond.js	0.045674363108675	ChangeLog.md
+test/trackList.json	0.0369298278093984	test/functions.conf
+test/trackList.json	0.0366600902678734	js/View/FeatureGlyph/Diamond.js
+js/main.js	0.0304362246880341	js/Store/SeqFeature/Genes.js
+js/Store/SeqFeature/Genes.js	0.0304362246880341	css/main.css
+test/trackList.json	0.0262311315028511	img/dialog.png
+test/trackList.json	0.0259168813607334	test/seq/refSeqs.json
+img/dialog.png	0.0219396965335226	README.md
+js/main.js	0.0203867817830305	README.md
+css/main.css	0.0203867817830305	README.md
+js/Store/SeqFeature/Genes.js	0.0161871220550299	js/MyVariantViewer.profile.js
+js/Store/SeqFeature/Variants.js	0.0125749547053446	css/main.css
+js/main.js	0.0125749547053446	js/Store/SeqFeature/Variants.js
+js/Store/SeqFeature/Variants.js	0.0118087362852536	.gitignore
+test/trackList.json	0.0117287728472209	ChangeLog.md
                    </textarea>
                 </div>
                 <input type="submit" name="Submit"></input>
