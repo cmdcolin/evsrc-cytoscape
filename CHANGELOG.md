@@ -1,3 +1,9 @@
+# Version 1.0.2
+
+## Features
+
+- Update npm versions
+
 # Version 1.0.1
 
 ## Features
