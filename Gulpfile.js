@@ -1,68 +1,71 @@
 var gulp = require('gulp');
-var gulp_uglify = require('gulp-uglify');
-var gulp_rename = require('gulp-rename');
-var gulp_concat = require('gulp-concat');
-var gulp_browserify = require('gulp-browserify');
+var uglify = require('gulp-uglify');
+var browserify = require('gulp-browserify');
+var smoosher = require('gulp-smoosher');
 
-gulp.task('build', function() {
-  gulp.src([
-    'js/*.js',
-    'node_modules/cytoscape-arbor/arbor.js'
-  ]).pipe(gulp.dest('dist/js'))
-
-
-  gulp.src([
-    '*.html'
-  ]).pipe(gulp.dest('dist'))
+gulp.task('build', function () {
+    gulp.src([
+        'js/*.js',
+        'node_modules/cytoscape-arbor/arbor.js',
+    ]).pipe(gulp.dest('dist/js'));
 
 
-  gulp.src([
-    'index.js'
-  ]).pipe(gulp_browserify())
-    .pipe(gulp_uglify())
+    gulp.src([
+        'index.html',
+    ])
+    .pipe(smoosh())
     .pipe(gulp.dest('dist'));
 
 
-  return 1
+    gulp.src([
+        'index.js',
+    ]).pipe(browserify())
+    .pipe(uglify())
+    .pipe(gulp.dest('dist'));
+
+
+    return 1;
 });
 
 
 
-gulp.task('debug', function() {
-  gulp.src([
-    'js/*.js'
-  ]).pipe(gulp.dest('dist/js'))
+gulp.task('debug', function () {
+    gulp.src([
+        'js/*.js',
+    ]).pipe(gulp.dest('dist/js'));
 
 
-  gulp.src([
-    '*.html'
-  ]).pipe(gulp.dest('dist'))
-
-
-  gulp.src([
-    'index.js'
-  ]).pipe(gulp_browserify())
+    gulp.src([
+        'index.html',
+    ])
+    .pipe(smoosh())
     .pipe(gulp.dest('dist'));
 
 
-  return 1
+    gulp.src([
+        'index.js',
+    ]).pipe(browserify())
+    .pipe(gulp.dest('dist'));
+
+
+    return 1;
 });
 
 gulp.task('default', ['build']);
 gulp.task('devmode', ['debug']);
-gulp.task('watch', function() {
-  gulp.watch('js/*.js', ['default']);
-  gulp.watch('index.js', ['default']);
+gulp.task('watch', function () {
+    gulp.watch('js/*.js', ['default']);
+    gulp.watch('index.js', ['default']);
 });
-gulp.task('watchdev', function() {
-  gulp.watch('js/*.js', ['devmode']);
-  gulp.watch('index.js', ['devmode']);
-  gulp.watch('index.html', ['devmode']);
+gulp.task('watchdev', function () {
+    gulp.watch('js/*.js', ['devmode']);
+    gulp.watch('index.js', ['devmode']);
+    gulp.watch('index.html', ['devmode']);
 });
 
 
 // Handle the error
-function errorHandler (error) {
-  console.log(error.toString());
-  this.emit('end');
+function errorHandler(error) {
+    console.log(error.toString());
+    this.emit('end');
 }
