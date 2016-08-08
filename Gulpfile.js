@@ -13,7 +13,7 @@ gulp.task('build', function () {
     gulp.src([
         'index.html',
     ])
-    .pipe(smoosh())
+    .pipe(smoosher())
     .pipe(gulp.dest('dist'));
 
 
@@ -38,7 +38,7 @@ gulp.task('debug', function () {
     gulp.src([
         'index.html',
     ])
-    .pipe(smoosh())
+    .pipe(smoosher())
     .pipe(gulp.dest('dist'));
 
 
