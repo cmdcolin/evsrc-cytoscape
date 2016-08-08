@@ -1,5 +1,4 @@
 var cytoscape = require('cytoscape');
-var domready = require('domready');
 var _ = require('underscore');
 var cyqtip = require('cytoscape-qtip');
 var cycola = require('cytoscape-cola');
@@ -13,7 +12,7 @@ var cyspread = require('cytoscape-spread');
 var dagre = require('dagre');
 var springy = require('springy');
 
-domready(function () {
+$(function () {
     var cy;
     cycola(cytoscape, cola);
     cydagre(cytoscape, dagre);
