@@ -8,6 +8,7 @@ var cydagre = require('cytoscape-dagre');
 var cyspringy = require('cytoscape-springy');
 var cyspread = require('cytoscape-spread');
 var cypanzoom = require('cytoscape-panzoom');
+var cyforcelayout = require('cytoscape-ngraph.forcelayout');
 
 // layouts that have npm, others included via source
 var dagre = require('dagre');
@@ -21,6 +22,7 @@ $(function () {
     cyarbor(cytoscape, arbor);
     cyspread(cytoscape);
     cycose(cytoscape);
+    cyforcelayout(cytoscape);
     cyqtip(cytoscape, $);
     cypanzoom(cytoscape, $);
     function basename(path) {
