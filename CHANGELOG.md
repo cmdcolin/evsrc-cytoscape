@@ -1,3 +1,10 @@
+# Version 1.0.3
+
+## Features
+
+- Added cytoscape.ngraph-forcelayout
+- Added eslint
+
 # Version 1.0.2
 
 ## Features
