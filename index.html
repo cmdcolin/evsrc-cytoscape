@@ -3,8 +3,6 @@
 <head>
   <meta name="generator" content="HTML Tidy for HTML5 for Mac OS X version 5.2.0">
   <title>evsrc viewer</title>
-  <script src="index.js">
-  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/2.2.0/jquery.qtip.css">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -240,6 +238,7 @@
   </script>
   <script src="js/cola.v3.min.js">
   </script>
+  <script src="index.js"></script>
 </head>
 <body style="font: 14px helvetica neue, helvetica, arial, sans-serif;">
   <div>
@@ -247,9 +246,12 @@
     <p>Renderer of the correlations produced by <a href="https://github.com/armish/evsrc">evsrc</a></p>
     <div style="float:left;">
       <form id="myform" name="myform">
-        <label>Animate?</label> <input type="checkbox" id="animate" checked="checked"> <label for="node_repulsion">Node
-        repulsion (cola)</label><input id="node_repulsion" type="number" value="20" step="10" min="10"> <label>Select
-        layout</label> <select id="layout">
+        <label for="animate">Animate?</label>
+        <input type="checkbox" id="animate" checked="checked"></input>
+        <label for="node_repulsion">Node repulsion (cola)</label>
+        <input id="node_repulsion" type="number" value="20" step="10" min="10">
+        <label for="layout">Select layout</label>
+        <select id="layout">
           <option value="cola">
             cola
           </option>
@@ -283,7 +285,8 @@
           <option value="breadthfirst">
             breadthfirst
           </option>
-        </select> <label>Enter SIF file</label>
+        </select>
+        <label>Enter SIF file</label>
         <div style="display:block">
           <textarea rows="10" cols="80" id="notes">FileA   pcorValues      FileB
 js/main.js      0.0909444606990114      css/main.css
@@ -305,7 +308,9 @@ js/main.js      0.0125749547053446      js/Store/SeqFeature/Variants.js
 js/Store/SeqFeature/Variants.js 0.0118087362852536      .gitignore
 test/trackList.json     0.0117287728472209      ChangeLog.md
                   </textarea>
-        </div><input type="submit" name="Submit"> <input type="button" value="Save as PNG" id="save_button">
+        </div>
+        <input type="submit" name="Submit"></input>
+        <input type="button" value="Save as PNG" id="save_button"></input>
         <div id="output"></div>
       </form>
     </div>
