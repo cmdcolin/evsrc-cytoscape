@@ -2,9 +2,7 @@ var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var browserify = require('gulp-browserify');
 var smoosher = require('gulp-smoosher');
-var gulp = require('gulp');
 var babel = require('gulp-babel');
-var uglify = require('gulp-uglify');
 var pump = require('pump');
 
 gulp.task('build', function (cb) {
