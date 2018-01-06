@@ -1,29 +1,31 @@
 var cytoscape = require('cytoscape');
 var _ = require('underscore');
 var cyqtip = require('cytoscape-qtip');
-var cycola = require('cytoscape-cola');
-var cycose = require('cytoscape-cose-bilkent');
-var cydagre = require('cytoscape-dagre');
-var cyspringy = require('cytoscape-springy');
-var cyspread = require('cytoscape-spread');
-var cypanzoom = require('cytoscape-panzoom');
+var cose_bilkent = require('cytoscape-cose-bilkent');
+var dagre = require('cytoscape-dagre');
+var spread = require('cytoscape-spread');
+var panzoom = require('cytoscape-panzoom');
+var euler = require('cytoscape-euler');
+var klay = require('cytoscape-klay');
 var cyforcelayout = require('cytoscape-ngraph.forcelayout');
 
 // layouts that have npm, others included via source
 var dagre = require('dagre');
-var springy = require('springy');
-var cola = require('cytoscape-cola/cola')
+var cola = require('cytoscape-cola')
 
 $(function () {
     var cy;
-    cycola(cytoscape, cola);
-    cydagre(cytoscape, dagre);
-    cyspringy(cytoscape, springy);
-    cyspread(cytoscape);
-    cycose(cytoscape);
+    console.log(cola)
+    cytoscape.use(cola);
+    cytoscape.use(cose_bilkent)
+    cytoscape.use(dagre);
+    cytoscape.use(spread);
+    cytoscape.use(klay);
+    cytoscape.use(euler);
+
     cyforcelayout(cytoscape);
-    cyqtip(cytoscape, $);
-    cypanzoom(cytoscape, $);
+    cyqtip(cytoscape);
+    panzoom(cytoscape);
     function basename(path) {
         return path.split('/').reverse()[0];
     }
