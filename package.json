@@ -35,13 +35,13 @@
   "repository": "https://github.com/cmdcolin/evsrc-cytoscape.git",
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
+    "babelify": "^8.0.0",
     "gulp": "^3.9.1",
-    "gulp-uglify": "^3.0.0",
-    "gulp-babel": "^7.0.0",
+    "gulp-bro": "^1.0.2",
     "gulp-browserify": "^0.5.1",
     "gulp-concat": "^2.6.1",
     "gulp-rename": "^1.2.2",
     "gulp-smoosher": "0.0.9",
-    "pump": "^2.0.0"
+    "uglifyify": "^4.0.5"
   }
 }
