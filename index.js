@@ -119,7 +119,7 @@ $(function () {
             textureOnViewport: true,
 
             // interpolate on high density displays instead of increasing resolution
-            pixelRatio: 1,
+            pixelRatio: 'auto',
 
             // a motion blur effect that increases perceived performance for little or no cost
             motionBlur: true,
