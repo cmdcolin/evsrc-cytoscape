@@ -1,6 +1,7 @@
 var cytoscape = require('cytoscape');
 var _ = require('underscore');
 var cyqtip = require('cytoscape-qtip');
+var weaver = require('weaverjs');
 var cose_bilkent = require('cytoscape-cose-bilkent');
 var dagre = require('cytoscape-dagre');
 var spread = require('cytoscape-spread');
@@ -8,10 +9,17 @@ var panzoom = require('cytoscape-panzoom');
 var euler = require('cytoscape-euler');
 var klay = require('cytoscape-klay');
 var cyforcelayout = require('cytoscape-ngraph.forcelayout');
-
-// layouts that have npm, others included via source
-var dagre = require('dagre');
 var cola = require('cytoscape-cola')
+
+function downloadURI(uri, name) {
+  var link = document.createElement("a");
+  link.download = name;
+  link.href = uri;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+// layouts that have npm, others included via source
 
 $(function () {
     var cy;
@@ -19,10 +27,10 @@ $(function () {
     cytoscape.use(cola);
     cytoscape.use(cose_bilkent)
     cytoscape.use(dagre);
-    cytoscape.use(spread);
     cytoscape.use(klay);
     cytoscape.use(euler);
 
+    spread(cytoscape, weaver);
     cyforcelayout(cytoscape);
     cyqtip(cytoscape);
     panzoom(cytoscape);
@@ -187,12 +195,7 @@ $(function () {
     $('#node_repulsion').on('change', redraw);
     $('#layout').on('change', redraw);
     $('#save_button').on('click', () => {
-        $('#output').empty();
-        $('#output').append($('<a/>').attr({
-            href: cy.png({
-                scale: 3,
-            }),
-        }).append('Download picture'));
+        downloadURI(cy.png({ scale: 3 }), 'out.png');
     });
 
     submitForm();

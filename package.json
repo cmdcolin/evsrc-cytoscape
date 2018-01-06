@@ -29,6 +29,7 @@
     "cytoscape-spread": "^2.0.0",
     "dagre": "^0.8.1",
     "underscore": "^1.8.3",
+    "weaverjs": "^1.2.0",
     "webcola": "^3.3.6"
   },
   "repository": "https://github.com/cmdcolin/evsrc-cytoscape.git",
